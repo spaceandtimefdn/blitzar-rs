@@ -84,8 +84,8 @@ Although the primary goal of this library is to provide GPU acceleration for cry
 
 | Backend            | Implementation                                             | Target Hardware             |
 | :---               | :---                                                       | :---                        |
-| `cpu`             | Serial      | x86 capable CPUs |
-| `gpu`             | Parallel   | Nvidia CUDA capable GPUs
+| `cpu`              | Serial                                                     | x86 capable CPUs            |
+| `gpu`              | Parallel                                                   | Nvidia CUDA capable GPUs    |
 
 
 ## Cryptographic Primitives
@@ -98,7 +98,7 @@ Note: we interchangeably use the terms "multi-scalar multiplication" and "multie
 
 The Blitzar implementation allows for computation of multiple, potentially different length, MSMs simultaneously. Additionally, either built-in, precomputed, generators can be used, or they can be provided as needed.
 
-Currently, Blitzar supports Curve25519 and bls12-381 G1 as groups. We're always working to expand the curves that we support, so check back for updates.
+Currently, Blitzar supports Curve25519, bls12-381 G1, bn254 G1, and Grumpkin as groups.
 
 #### Inner Product Argument
 
@@ -146,10 +146,10 @@ blitzar = <version_number>
 
 ### Feature Flags
 
-| Feature            | Default? | Description |
-| :---               |  :---:   | :---        |
+| Feature        | Default? | Description              |
+| :---           |  :---:   | :---                     |
 | `cpu`          |    x     | Enables the CPU backend. |
-| `gpu`            |    ✓     | Enables the GPU Backend. |
+| `gpu`          |    ✓     | Enables the GPU Backend. |
 
 ### Tests
 
