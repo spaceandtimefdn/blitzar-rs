@@ -6,9 +6,9 @@
   <h1 align="center">Blitzar Crate</h1>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" width="200px" srcset="https://raw.githubusercontent.com/spaceandtimelabs/blitzar-rs/assets/logo_dark_background.png">
-  <source media="(prefers-color-scheme: light)" width="200px" srcset="https://raw.githubusercontent.com/spaceandtimelabs/blitzar-rs/assets/logo_light_background.png">
-  <img alt="Blitzar" width="200px" src="https://raw.githubusercontent.com/spaceandtimelabs/blitzar-rs/assets/logo_light_background.png">
+  <source media="(prefers-color-scheme: dark)" width="200px" srcset="https://raw.githubusercontent.com/spaceandtimefdn/blitzar-rs/assets/logo_dark_background.png">
+  <source media="(prefers-color-scheme: light)" width="200px" srcset="https://raw.githubusercontent.com/spaceandtimefdn/blitzar-rs/assets/logo_light_background.png">
+  <img alt="Blitzar" width="200px" src="https://raw.githubusercontent.com/spaceandtimefdn/blitzar-rs/assets/logo_light_background.png">
 </picture>
 
 <p align="center">
@@ -20,7 +20,7 @@
     <img alt="Discord Server" src="https://img.shields.io/discord/953025874154893342?logo=discord">
   </a>
   
-  <a href="https://github.com/spaceandtimelabs/blitzar-rs/blob/main/LICENSE">
+  <a href="https://github.com/spaceandtimefdn/blitzar-rs/blob/main/LICENSE">
     <img alt="License" src="https://img.shields.io/badge/License-Apache_2.0-blue.svg">
     </a>
   </a>
@@ -45,16 +45,16 @@
     </a>
   </a>
 
-  <a href="https://github.com/spaceandtimelabs/blitzar-rs/actions/workflows/release.yml">
-    <img alt="Build State" src="https://github.com/spaceandtimelabs/blitzar-rs/actions/workflows/release.yml/badge.svg">
+  <a href="https://github.com/spaceandtimefdn/blitzar-rs/actions/workflows/release.yml">
+    <img alt="Build State" src="https://github.com/spaceandtimefdn/blitzar-rs/actions/workflows/release.yml/badge.svg">
   </a>
 
   <p align="center">
     High-Level Rust wrapper for the blitzar-sys crate.
     <br />
-    <a href="https://github.com/spaceandtimelabs/blitzar-rs/issues">Report Bug</a>
+    <a href="https://github.com/spaceandtimefdn/blitzar-rs/issues">Report Bug</a>
     |
-    <a href="https://github.com/spaceandtimelabs/blitzar-rs/issues">Request a Feature</a>
+    <a href="https://github.com/spaceandtimefdn/blitzar-rs/issues">Request a Feature</a>
   </p>
 </div>
 
@@ -67,9 +67,9 @@ the project to community contributions to expand the scope of Blitzar and lay
 the foundation for the next wave of lightning fast ZK proofs.
 
 #### Overview
-Blitzar-rs is a High-Level rust wrapper for the [blitzar-sys crate](https://github.com/spaceandtimelabs/blitzar/tree/main/rust/blitzar-sys) for accelerating cryptographic zero-knowledge proof algorithms on the CPU and GPU.
+Blitzar-rs is a High-Level rust wrapper for the [blitzar-sys crate](https://github.com/spaceandtimefdn/blitzar/tree/main/rust/blitzar-sys) for accelerating cryptographic zero-knowledge proof algorithms on the CPU and GPU.
 > **Note**
-> This repo contains the high-Level rust wrapper for the blitzar-sys crate. If you are using C++, use the code from the companion repo here: https://github.com/spaceandtimelabs/blitzar.
+> This repo contains the high-Level rust wrapper for the blitzar-sys crate. If you are using C++, use the code from the companion repo here: https://github.com/spaceandtimefdn/blitzar.
 
 The crate provides
 
@@ -92,7 +92,7 @@ Although the primary goal of this library is to provide GPU acceleration for cry
 
 #### Multi-Scalar Multiplication (MSM) / Generalized Pedersen Commitment / Multiexponentiation
 
-Blitzar provides an implementation of Multi-Scalar Multiplication (i.e. generalized Pedersen commitments). Mathematical details behind MSM are outlined in the [Blitzar Github repository](https://github.com/spaceandtimelabs/blitzar#multi-scalar-multiplication-msm--generalized-pedersen-commitment--multiexponentiation).
+Blitzar provides an implementation of Multi-Scalar Multiplication (i.e. generalized Pedersen commitments). Mathematical details behind MSM are outlined in the [Blitzar Github repository](https://github.com/spaceandtimefdn/blitzar#multi-scalar-multiplication-msm--generalized-pedersen-commitment--multiexponentiation).
 
 Note: we interchangeably use the terms "multi-scalar multiplication" and "multiexponentiation" to refer to the this operation because when the group is written additively, the operation is a multi-scalar multiplication, and when the group is written multiplicatively, the operation is a multiexponentiation.
 
@@ -102,11 +102,11 @@ Currently, Blitzar supports Curve25519, bls12-381 G1, bn254 G1, and Grumpkin as 
 
 #### Inner Product Argument
 
-Blitzar provides a modified implementation of an inner product argument (e.g. [Bulletproofs](https://eprint.iacr.org/2017/1066.pdf) and [Halo2](https://zcash.github.io/halo2/background/pc-ipa.html)). Mathematical details of the modified inner product argument are outlined in the [Blitzar Github repository](https://github.com/spaceandtimelabs/blitzar#inner-product-argument).
+Blitzar provides a modified implementation of an inner product argument (e.g. [Bulletproofs](https://eprint.iacr.org/2017/1066.pdf) and [Halo2](https://zcash.github.io/halo2/background/pc-ipa.html)). Mathematical details of the modified inner product argument are outlined in the [Blitzar Github repository](https://github.com/spaceandtimefdn/blitzar#inner-product-argument).
 
 #### Other Features to Come
 
-If there is a particular feature that you would like to see, please [reach out](https://github.com/spaceandtimelabs/blitzar/issues). Blitzar is a community-first project, and we want to hear from you.
+If there is a particular feature that you would like to see, please [reach out](https://github.com/spaceandtimefdn/blitzar/issues). Blitzar is a community-first project, and we want to hear from you.
 
 ## Getting Started
 
@@ -190,11 +190,11 @@ Additionally [Jaeger tracing](https://www.jaegertracing.io/) is supported. For m
 
 ## Development Process
 
-The main branch is regularly built and tested, being the only source of truth. [Tags](https://github.com/spaceandtimelabs/blitzar-rs/tags) are created regularly from automated semantic release executions. 
+The main branch is regularly built and tested, being the only source of truth. [Tags](https://github.com/spaceandtimefdn/blitzar-rs/tags) are created regularly from automated semantic release executions. 
 
 ## Contributing
 
-We're excited to open Blitzar-rs to the community, but are not accepting community Pull Requests yet due to logistic reasons. However, feel free to contribute with any suggestion, idea, or bugfix on our [Issues](https://github.com/spaceandtimelabs/blitzar-rs/issues) panel. Also, see [contribution guide](CONTRIBUTING.md).
+We're excited to open Blitzar-rs to the community, but are not accepting community Pull Requests yet due to logistic reasons. However, feel free to contribute with any suggestion, idea, or bugfix on our [Issues](https://github.com/spaceandtimefdn/blitzar-rs/issues) panel. Also, see [contribution guide](CONTRIBUTING.md).
 
 ## Community & support
 
@@ -206,4 +206,4 @@ This project is released under the [Apache 2 License](LICENSE).
   
 ## C++ code
 
-This repo contains the high-Level rust wrapper for the blitzar-sys crate. If you are using C++, use the code from the companion repo here: https://github.com/spaceandtimelabs/blitzar.
+This repo contains the high-Level rust wrapper for the blitzar-sys crate. If you are using C++, use the code from the companion repo here: https://github.com/spaceandtimefdn/blitzar.
