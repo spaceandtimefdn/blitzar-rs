@@ -9,7 +9,7 @@
         "branches": [
             "main"
         ],
-        "repositoryUrl": "https://github.com/spaceandtimelabs/blitzar-rs",
+        "repositoryUrl": "https://github.com/spaceandtimefdn/blitzar-rs",
         "plugins": [
             [
                 "@semantic-release/commit-analyzer",

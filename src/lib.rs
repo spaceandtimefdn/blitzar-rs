@@ -17,9 +17,9 @@
 
 //! <p align="center">
 //!   <picture>
-//!     <source media="(prefers-color-scheme: dark)" width="200px" srcset="https://raw.githubusercontent.com/spaceandtimelabs/blitzar-rs/assets/logo_dark_background.png">
-//!     <source media="(prefers-color-scheme: light)" width="200px" srcset="https://raw.githubusercontent.com/spaceandtimelabs/blitzar-rs/assets/logo_light_background.png">
-//!     <img alt="Blitzar" width="200px" src="https://raw.githubusercontent.com/spaceandtimelabs/blitzar-rs/assets/logo_light_background.png">
+//!     <source media="(prefers-color-scheme: dark)" width="200px" srcset="https://raw.githubusercontent.com/spaceandtimefdn/blitzar-rs/assets/logo_dark_background.png">
+//!     <source media="(prefers-color-scheme: light)" width="200px" srcset="https://raw.githubusercontent.com/spaceandtimefdn/blitzar-rs/assets/logo_light_background.png">
+//!     <img alt="Blitzar" width="200px" src="https://raw.githubusercontent.com/spaceandtimefdn/blitzar-rs/assets/logo_light_background.png">
 //!   </picture>
 //! </p>
 //! <p align="center">
@@ -32,14 +32,14 @@
 //!  <a href="https://developer.nvidia.com/cuda-downloads">
 //!     <img alt="CUDA" src="https://img.shields.io/badge/CUDA-12.6.1-green?style=flat&logo=nvidia">
 //!  </a>
-//!   <a href="https://github.com/spaceandtimelabs/blitzar-rs">
-//!     <img alt="Build states" src="https://github.com/spaceandtimelabs/blitzar-rs/actions/workflows/release.yml/badge.svg">
+//!   <a href="https://github.com/spaceandtimefdn/blitzar-rs">
+//!     <img alt="Build states" src="https://github.com/spaceandtimefdn/blitzar-rs/actions/workflows/release.yml/badge.svg">
 //!   </a>
 //! </p>
 //!
 //! High-Level Rust wrapper for the `blitzar-sys` crate.
 //! For the Rust sys-crate and the C++ repo, check
-//! [here](https://github.com/spaceandtimelabs/blitzar).
+//! [here](https://github.com/spaceandtimefdn/blitzar).
 //!
 //! ## Considerations:
 //!
