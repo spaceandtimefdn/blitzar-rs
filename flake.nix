@@ -18,19 +18,40 @@
         overlays = [(import rust-overlay)];
         pkgs = import nixpkgs {
           inherit system overlays;
+          config.allowUnfree = true;
         };
       in {
-        devShells.default = with pkgs;
-          (mkShell.override {stdenv = gcc13Stdenv;}) {
-            buildInputs = [
-              (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
-              # additional .cargo config dependencies
-              clang
-              lld
-            ];
+        devShells = rec {
+          default = gpu;
+          cpu = with pkgs;
+            (mkShell.override {stdenv = gcc13Stdenv;}) {
+              buildInputs = [
+                (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
+                # additional .cargo config dependencies
+                clang
+                lld
+              ];
 
-            BLITZAR_BACKEND = "cpu";
-          };
+              BLITZAR_BACKEND = "cpu";
+            };
+          gpu = with pkgs;
+            (mkShell.override {stdenv = gcc13Stdenv;}) {
+              buildInputs = [
+                (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
+                cudatoolkit
+                # additional .cargo config dependencies
+                clang
+                lld
+              ];
+
+              BLITZAR_BACKEND = "gpu";
+
+              LD_LIBRARY_PATH = lib.makeLibraryPath [
+                "/usr/lib/wsl"
+                pkgs.linuxPackages.nvidia_x11
+              ];
+            };
+        };
       }
     );
 }
