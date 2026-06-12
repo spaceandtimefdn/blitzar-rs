@@ -24,26 +24,27 @@
         devShells = rec {
           default = cpu;
 
+          cpuBuildInputs = with pkgs; [
+            (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
+            # additional .cargo config dependencies
+            clang
+            lld
+          ];
+
           cpu = with pkgs;
             (mkShell.override {stdenv = gcc13Stdenv;}) {
-              buildInputs = [
-                (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
-                # additional .cargo config dependencies
-                clang
-                lld
-              ];
+              buildInputs = cpuBuildInputs;
 
               BLITZAR_BACKEND = "cpu";
             };
+
           gpu = with pkgs;
             (mkShell.override {stdenv = gcc13Stdenv;}) {
-              buildInputs = [
-                (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
-                cudatoolkit
-                # additional .cargo config dependencies
-                clang
-                lld
-              ];
+              buildInputs =
+                cpuBuildInputs
+                ++ [
+                  cudatoolkit
+                ];
 
               BLITZAR_BACKEND = "gpu";
 
