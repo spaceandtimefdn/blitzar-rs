@@ -22,7 +22,8 @@
         };
       in {
         devShells = rec {
-          default = gpu;
+          default = cpu;
+
           cpu = with pkgs;
             (mkShell.override {stdenv = gcc13Stdenv;}) {
               buildInputs = [
