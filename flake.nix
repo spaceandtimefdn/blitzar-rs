@@ -1,5 +1,5 @@
 {
-  description = "Nix shell for developing sxt-proof-of-sql";
+  description = "Nix shell for developing blitzar-rs";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
