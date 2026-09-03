@@ -1,3 +1,4 @@
+#![expect(clippy::needless_doctest_main)]
 use super::backend::init_backend;
 use crate::compute::{curve::SwCurveConfig, CurveId, ElementP2};
 use ark_ec::short_weierstrass::Affine;

@@ -1,3 +1,4 @@
+#![expect(clippy::needless_doctest_main)]
 // Copyright 2023-present Space and Time Labs, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
