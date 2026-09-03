@@ -28,7 +28,7 @@ mod blitzar_curve25519_benchmarks {
         let mut rng = thread_rng();
 
         (0..num_commits)
-            .map(|_| ((0..num_rows).map(|_| Scalar::random(&mut rng)).collect()))
+            .map(|_| (0..num_rows).map(|_| Scalar::random(&mut rng)).collect())
             .collect()
     }
 
@@ -36,14 +36,14 @@ mod blitzar_curve25519_benchmarks {
         let mut rng = rand::thread_rng();
 
         (0..num_commits)
-            .map(|_| ((0..num_rows).map(|_| rng.r#gen::<u8>()).collect()))
+            .map(|_| (0..num_rows).map(|_| rng.r#gen::<u8>()).collect())
             .collect()
     }
 
     fn construct_generators(n: usize) -> Vec<RistrettoPoint> {
         let mut rng = thread_rng();
         (0..n)
-            .map(|_| (&Scalar::random(&mut rng) * constants::RISTRETTO_BASEPOINT_TABLE))
+            .map(|_| &Scalar::random(&mut rng) * constants::RISTRETTO_BASEPOINT_TABLE)
             .collect()
     }
 
