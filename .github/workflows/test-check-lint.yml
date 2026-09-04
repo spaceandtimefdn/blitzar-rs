@@ -54,9 +54,9 @@ jobs:
       - name: Run Clippy
         run: cargo clippy --all-targets --all-features -- -D warnings
 
-  test-cpu:
-    name: Test the CPU backend
-    runs-on: nvidia-nc4as-t4
+  check-flake:
+    name: Check nix flake
+    runs-on: ubuntu-latest
     env:
       CARGO_HOME: ${{ github.workspace }}/.cargo
       PATH: ${{ github.workspace }}/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
@@ -64,15 +64,27 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Install stable toolchain
-        run: curl https://sh.rustup.rs -sSf | bash -s -- -y --profile minimal
+      - name: Install nix
+        uses: cachix/install-nix-action@v31
 
-      - name: Install stable toolchain
-        run: |
-          rustup toolchain install
+      - name: Check nix flake
+        run: nix flake check
+
+  test-cpu:
+    name: Test the CPU backend
+    runs-on: ubuntu-latest
+    env:
+      CARGO_HOME: ${{ github.workspace }}/.cargo
+      PATH: ${{ github.workspace }}/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v31
 
       - name: Run CPU test
-        run: cargo test --features cpu
+        run: nix develop --command cargo test --no-default-features --features cpu
 
   test-gpu:
     name: Test the GPU backend
@@ -84,12 +96,10 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v3
 
-      - name: Install stable toolchain
-        run: curl https://sh.rustup.rs -sSf | bash -s -- -y --profile minimal
-
-      - name: Install stable toolchain
-        run: |
-          rustup toolchain install
+      - name: Install nix
+        uses: cachix/install-nix-action@v31
+        with:
+          install_options: --no-daemon
 
       - name: Run GPU test
-        run: cargo test --features gpu
+        run: nix develop --extra-experimental-features "nix-command flakes" ".#gpu" --command cargo test --features gpu
