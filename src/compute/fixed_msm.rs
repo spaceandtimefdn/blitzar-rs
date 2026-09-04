@@ -1,3 +1,4 @@
+#![expect(clippy::needless_doctest_main)]
 use super::backend::init_backend;
 use crate::compute::{curve::SwCurveConfig, CurveId, ElementP2};
 use ark_ec::short_weierstrass::Affine;
@@ -7,7 +8,7 @@ use std::{ffi::CString, marker::PhantomData};
 fn count_scalars_per_output(scalars_len: usize, output_bit_table: &[u32]) -> u32 {
     let bit_sum: usize = output_bit_table.iter().map(|s| *s as usize).sum();
     let num_output_bytes = bit_sum.div_ceil(8);
-    assert!(scalars_len % num_output_bytes == 0);
+    assert!(scalars_len.is_multiple_of(num_output_bytes));
     (scalars_len / num_output_bytes).try_into().unwrap()
 }
 
@@ -101,7 +102,7 @@ impl<T: CurveId> MsmHandle<T> {
     ///    res[m-1] = s_m1 * g_1 + s_12 * g_2 + ... + s_mn * g_n
     pub fn msm(&self, res: &mut [T], element_num_bytes: u32, scalars: &[u8]) {
         let num_outputs = res.len() as u32;
-        assert!(scalars.len() as u32 % (num_outputs * element_num_bytes) == 0);
+        assert!((scalars.len() as u32).is_multiple_of(num_outputs * element_num_bytes));
         let n = scalars.len() as u32 / (num_outputs * element_num_bytes);
         unsafe {
             blitzar_sys::sxt_fixed_multiexponentiation(
