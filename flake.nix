@@ -1,0 +1,63 @@
+{
+  description = "Nix shell for developing blitzar-rs";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+  };
+
+  outputs = inputs @ {
+    nixpkgs,
+    rust-overlay,
+    flake-parts,
+    ...
+  }:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
+      perSystem = {
+        pkgs,
+        system,
+        ...
+      }: let
+        overlays = [(import rust-overlay)];
+        pkgs = import nixpkgs {
+          inherit system overlays;
+          config.allowUnfree = true;
+        };
+        cpuBuildInputs = with pkgs; [
+          (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
+          # additional .cargo config dependencies
+          clang
+          lld
+        ];
+      in {
+        devShells = rec {
+          default = cpu;
+
+          cpu = with pkgs;
+            (mkShell.override {stdenv = gcc13Stdenv;}) {
+              buildInputs = cpuBuildInputs;
+
+              BLITZAR_BACKEND = "cpu";
+            };
+
+          gpu = with pkgs;
+            (mkShell.override {stdenv = gcc13Stdenv;}) {
+              buildInputs =
+                cpuBuildInputs
+                ++ [
+                  cudatoolkit
+                ];
+
+              BLITZAR_BACKEND = "gpu";
+
+              LD_LIBRARY_PATH = lib.makeLibraryPath [
+                "/usr/lib/wsl"
+                pkgs.linuxPackages.nvidia_x11
+              ];
+            };
+        };
+      };
+    };
+}

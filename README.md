@@ -117,7 +117,7 @@ To get a local copy up and running, consider the following steps.
 <details open>
 <summary>GPU backend prerequisites:</summary>
 
-* [Rust 1.85](https://www.rust-lang.org/tools/install)
+* [nix](https://nixos.org/download/) with experimental features "nix-command" and "flakes" [enabled](https://nixos.wiki/wiki/flakes).
 * `x86_64` Linux instance.
 * NVIDIA driver version >= 570.211.01 (check the [compatibility list here](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html)).
 
@@ -128,7 +128,7 @@ To get a local copy up and running, consider the following steps.
 
 You'll need the following requirements to run the environment:
 
-* [Rust 1.85](https://www.rust-lang.org/tools/install)
+* [nix](https://nixos.org/download/) with experimental features "nix-command" and "flakes" [enabled](https://nixos.wiki/wiki/flakes).
 * `x86_64` Linux instance.
 
 </details>
@@ -150,6 +150,19 @@ blitzar = <version_number>
 | :---           |  :---:   | :---                     |
 | `cpu`          |    x     | Enables the CPU backend. |
 | `gpu`          |    ✓     | Enables the GPU Backend. |
+
+### Entering the build environment
+With cpu backend:
+```bash
+nix develop
+# or, explicitly
+nix develop .#cpu
+```
+
+With gpu backend:
+```bash
+nix develop .#gpu
+```
 
 ### Tests
 
